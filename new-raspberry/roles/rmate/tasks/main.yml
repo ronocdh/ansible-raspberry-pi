@@ -1,0 +1,4 @@
+---
+- name: Copy rmate to /usr/local/bin/mate
+  copy: src=rmate dest=/usr/local/bin/mate
+  sudo: yes

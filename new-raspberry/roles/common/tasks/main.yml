@@ -1,0 +1,49 @@
+- name: We need to install the prerequisites for Ansible.
+  shell: "apt-get install --assume-yes aptitude python-apt"
+  sudo: yes
+
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+  sudo: yes
+
+- name: We need to upgrade the distro.
+  apt: upgrade=yes
+  sudo: yes
+
+- name: We need to set the hostname
+  hostname: name={{ hostname }}
+
+- name: Make sure some basic tools are installed
+  apt: pkg={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - unattended-upgrades
+    - git
+    - curl
+    - atop
+    - htop
+    - iftop
+    - iotop
+    - nmap
+    - mosh
+    - tmux
+    - zsh
+    - nmon
+    - dstat
+    - iptables
+    - rpi-update
+    - haveged
+
+- name: Uninstall the massive wolfram-alpha engine
+  apt: pkg={{ item }} state=absent
+  sudo: yes
+  with_items:
+    - wolfram-engine
+
+- name: Autoremove packages
+  shell: "apt-get autoremove --assume-yes --purge"
+  sudo: yes
+
+- name: Autoclean
+  shell: "apt-get autoclean --assume-yes"
+  sudo: yes

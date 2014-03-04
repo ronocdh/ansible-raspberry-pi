@@ -1,0 +1,17 @@
+---
+- hosts: topping
+  user: pi
+  sudo: True
+  gather_facts: True
+
+  roles:
+     - common
+     - oh-my-zsh
+     - rmate
+
+  tasks:
+    - name: Final greeting upon successful Completion.
+      pause: prompt="If you've got this far without any errors everything is probably okay! Press [Enter] to continue."
+    - name: rebooting
+      sudo: yes
+      action: command /sbin/reboot -t now
