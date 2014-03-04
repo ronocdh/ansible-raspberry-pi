@@ -1,16 +1,17 @@
-- name: We need to install the prerequisites for Ansible.
+---
+- name: We need to install the prerequisites for Ansible to run successfully.
   shell: "apt-get install --assume-yes aptitude python-apt"
   sudo: yes
 
-- name: Update apt cache
+- name: Let's update the apt cache.
   apt: update_cache=yes cache_valid_time=3600
   sudo: yes
 
-- name: We need to upgrade the distro.
+- name: Now we need to update the Raspbian distribution.
   apt: upgrade=yes
   sudo: yes
 
-- name: We need to set the hostname
+- name: We are setting our new hostname.
   hostname: name={{ hostname }}
 
 - name: Make sure some basic tools are installed
@@ -40,10 +41,10 @@
   with_items:
     - wolfram-engine
 
-- name: Autoremove packages
+- name: Autoremove any unused packages.
   shell: "apt-get autoremove --assume-yes --purge"
   sudo: yes
 
-- name: Autoclean
+- name: Let's Autoclean the system.
   shell: "apt-get autoclean --assume-yes"
   sudo: yes

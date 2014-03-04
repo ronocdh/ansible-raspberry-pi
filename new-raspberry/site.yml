@@ -1,5 +1,5 @@
 ---
-- hosts: topping
+- hosts: raspberry
   user: pi
   sudo: True
   gather_facts: True
