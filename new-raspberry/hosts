@@ -1,3 +1,2 @@
-[raspberry]
-# Your Raspberry Pi's IP address goes here
-192.168.0.34
+[middling]
+192.168.0.31

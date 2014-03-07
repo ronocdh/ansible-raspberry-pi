@@ -1,0 +1,8 @@
+# Decide which port you would like to use, use 443 if you are setting up a bridge.
+ORPort: 443
+
+# You need to put some contact information in, so you can be contacted if your relay goes down.
+contactinfo: 0x8C24CCA3 Sharkadile <sharkadile AT nym dot mixmin dot net>
+
+# Give your relay a nickname.
+nickname: Sharkadile
