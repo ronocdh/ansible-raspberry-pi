@@ -1,5 +1,5 @@
 ---
-- hosts: raspberry
+- hosts: all
   user: pi
   sudo: True
   gather_facts: True

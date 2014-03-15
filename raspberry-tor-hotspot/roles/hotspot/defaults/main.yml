@@ -2,6 +2,3 @@
 ssid: ┓┏ 凵 =╱⊿┌┬┐
 wpa_passphrase: raspberryaccesspoint
 chipset: nl80211
-
-# Uncomment the following line if you are using the RTL8188CU chipset.
-# chipset: rtl871xdrv
