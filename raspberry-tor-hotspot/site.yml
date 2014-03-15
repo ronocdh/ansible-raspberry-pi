@@ -4,10 +4,9 @@
   sudo: yes
 
   roles:
-     - hostname
-     # - common
-    # - hotspot
-     - tor
+     - common
+     - hotspot
+#     - tor
 
   tasks:
   - name: Final greeting upon successful Completion.
