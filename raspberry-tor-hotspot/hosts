@@ -1,2 +1,2 @@
-[pi-fi]
-192.168.0.54
+[raspberries]
+pifi ansible_ssh_host=192.168.0.34 ansible_ssh_user=pi
