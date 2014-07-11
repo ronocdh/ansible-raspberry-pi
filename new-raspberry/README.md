@@ -1,5 +1,7 @@
 # New Raspberry Pi #
 
+It's important to run setup, then login and run raspi-config and make sure to install apt-get install python-apt
+
 I'm new to using [Ansible][0] so please forgive any basic errors, but if you do need any help just get interaction and I'll be happy to help!
 
 This [Ansible playbook][7] does the following things:

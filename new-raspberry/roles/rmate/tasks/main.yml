@@ -2,4 +2,3 @@
 # We need to copy the bash script from our local machine to the Raspberry Pi.
 - name: Copy rmate to /usr/local/bin/mate
   copy: src=rmate dest=/usr/local/bin/mate
-  sudo: yes

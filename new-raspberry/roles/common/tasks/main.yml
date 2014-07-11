@@ -1,10 +1,6 @@
 ---
-- name: We need to install the prerequisites for Ansible to run successfully.
-  shell: "apt-get install --assume-yes aptitude python-apt"
-  sudo: yes
-
 - name: Let's update the apt cache.
-  apt: update_cache=yes cache_valid_time=3600
+  apt: update_cache=yes
   sudo: yes
 
 - name: Now we need to update the Raspbian distribution.
@@ -21,19 +17,16 @@
     - unattended-upgrades
     - git
     - curl
-    - atop
     - htop
-    - iftop
-    - iotop
     - nmap
     - mosh
     - tmux
     - zsh
     - nmon
     - dstat
-    - iptables
     - rpi-update
     - haveged
+    - avahi-daemon 
 
 - name: Uninstall the massive wolfram-alpha engine
   apt: pkg={{ item }} state=absent
