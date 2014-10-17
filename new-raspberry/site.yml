@@ -1,11 +1,10 @@
 ---
 - hosts: all
   user: pi
-  sudo: True
-  gather_facts: yes
+  gather_facts: no
 
   roles:
-     - common
+#     - common
      - shairplay
 
   tasks:
