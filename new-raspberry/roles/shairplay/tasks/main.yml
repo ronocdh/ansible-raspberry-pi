@@ -3,7 +3,7 @@
   shell: "amixer cset numid=3 1"
   sudo: yes
 
-- name: Install Shairplay dependencies
+- name: Install Net::SDP dependencies
   apt: pkg={{ item }} state=latest
   sudo: yes
   with_items:
@@ -15,9 +15,11 @@
     - libwww-perl
     - avahi-utils
     - libmodule-build-perl
+  tags: packages
 
 - name: Grab Perl Net:SDP repository
   git: repo=https://github.com/njh/perl-net-sdp.git dest={{perl_sdp_directory}}
+  tags: packages git
 
 - name: Build Perl Net:SDP
   command: chdir={{perl_sdp_directory}} perl Build.PL
@@ -35,12 +37,49 @@
   tags: build
 
 - name: Clone Shairplay repository.
-  git: repo=https://github.com/hendrikw82/shairport.git dest={{shairplay_directory}}
-  tags: shairplay
+  git: repo=https://github.com/juhovh/shairplay dest={{shairplay_directory}}
+  tags:
+    - packages
+    - shairplay
+    - git
 
-- name: Make Shairplay
+- name: Install Shairplay dependencies
+  apt: pkg={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - autoconf
+    - automake
+    - libtool
+    - libltdl-dev
+    - libao-dev
+    - libavahi-compat-libdnssd-dev
+    - avahi-daemon
+  tags: 
+    - packages
+    - shairplay
+
+- name: Generate Shairplay build settings
+  command: chdir={{shairplay_directory}} ./autogen.sh
+  tags:
+    - build
+    - shairplay
+
+- name: Configure Shairplay build settings
+  command: chdir={{shairplay_directory}} ./configure
+  tags:
+    - build
+    - shairplay
+
+- name: Configure Shairplay build settings
   command: chdir={{shairplay_directory}} make
-  tags: build shairplay
+  tags:
+    - build
+    - shairplay
 
-
+- name: Configure Shairplay build settings
+  command: chdir={{shairplay_directory}} make install
+  sudo: yes
+  tags:
+    - build
+    - shairplay
 
