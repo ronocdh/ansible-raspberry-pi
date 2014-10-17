@@ -1,13 +1,12 @@
 ---
-- hosts: third
+- hosts: all
   user: pi
   sudo: True
-  gather_facts: no
+  gather_facts: yes
 
   roles:
      - common
-     - oh-my-zsh
-     - rmate
+     - shairplay
 
   tasks:
     - name: Final greeting upon successful Completion.
