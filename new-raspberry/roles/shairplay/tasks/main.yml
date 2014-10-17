@@ -36,9 +36,11 @@
 
 - name: Clone Shairplay repository.
   git: repo=https://github.com/hendrikw82/shairport.git dest={{shairplay_directory}}
+  tags: shairplay
 
 - name: Make Shairplay
-  command: make -c {{shairplay_directory}}
+  command: chdir={{shairplay_directory}} make
+  tags: build shairplay
 
 
 
