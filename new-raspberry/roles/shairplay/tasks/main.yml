@@ -13,7 +13,7 @@
   apt: pkg={{ item }} state=latest
   sudo: yes
   with_items:
-    - -git
+    - git
     - libao-dev
     - libssl-dev
     - libcrypt-openssl-rsa-perl
