@@ -1,3 +1,2 @@
 [raspberries]
-second ansible_ssh_host=192.168.0.32 ansible_ssh_user=pi
-third ansible_ssh_host=192.168.0.33 ansible_ssh_user=pi
+jukebox ansible_ssh_host=10.0.0.32 ansible_ssh_user=pi
