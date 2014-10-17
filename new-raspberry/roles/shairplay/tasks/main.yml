@@ -1,0 +1,39 @@
+---
+- name: Enable audio output port (instead of HDMI)
+  shell: "sudo amixer cset numid=3 1"
+
+- name: Now we need to update the Raspbian distribution.
+  apt: upgrade=yes
+  sudo: yes
+
+- name: We are setting our new hostname.
+  hostname: name={{ hostname }}
+
+- name: Install Shairplay dependencies
+  apt: pkg={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - -git
+    - libao-dev
+    - libssl-dev
+    - libcrypt-openssl-rsa-perl
+    - libio-socket-inet6-perl
+    - libwww-perl
+    - avahi-utils
+    - libmodule-build-perl
+
+- name: Grab Perl Net:SDP repository
+  shell: "git clone https://github.com/njh/perl-net-sdp.git {{perl_sdp_directory}}"
+
+- name: Build Perl Net:SDP
+  shell: "perl {{perl_sdp_directory}}Build"
+
+- name: Build Perl Net:SDP test
+  shell: "perl {{perl_sdp_directory}}Build test"
+  sudo: yes
+
+- name: Build Perl Net:SDP install
+  shell: "perl {{perl_sdp_directory}}Build install"
+  sudo: yes
+
+
