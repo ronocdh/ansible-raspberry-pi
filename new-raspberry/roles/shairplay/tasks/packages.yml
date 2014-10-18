@@ -1,0 +1,49 @@
+---
+- name: Install Net::SDP dependencies
+  apt: pkg={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - git
+    - libao-dev
+    - libssl-dev
+    - libcrypt-openssl-rsa-perl
+    - libio-socket-inet6-perl
+    - libwww-perl
+    - avahi-utils
+    - libmodule-build-perl
+  tags: packages
+
+- name: Install Shairplay dependencies
+  apt: pkg={{ item }} state=latest
+  sudo: yes
+  with_items:
+    - autoconf
+    - automake
+    - libtool
+    - libltdl-dev
+    - libao-dev
+    - libavahi-compat-libdnssd-dev
+    - avahi-daemon
+  tags: 
+    - packages
+    - shairplay
+
+- name: Grab Perl Net:SDP repository
+  git: repo=https://github.com/njh/perl-net-sdp.git dest={{perl_sdp_directory}}
+  tags: packages git
+
+- name: Build Perl Net:SDP
+  command: chdir={{perl_sdp_directory}} perl Build.PL
+  sudo: yes
+  tags: build
+
+- name: Build Perl Net:SDP test
+  command: chdir={{perl_sdp_directory}} ./Build test
+  sudo: yes
+  tags: build
+
+- name: Build Perl Net:SDP install
+  command: chdir={{perl_sdp_directory}} ./Build install
+  sudo: yes
+  tags: build
+
