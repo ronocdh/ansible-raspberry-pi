@@ -17,9 +17,12 @@
     - shairport
 
 - name: Create shairport user
-  user: name={{shairport_user}} create_home=no system=yes groups=audio append=yes
+  user: name={{shairport_user}} createhome=no system=yes groups=audio append=yes
+  sudo: yes
   tags:
     - shairport
+    - system
+
 
 - name: Daemonize Shairport
   command: copy {{shairport_directory}}/scripts/debian/init.d/shairport /etc/init.d/shairport
@@ -27,4 +30,5 @@
   notify: restart_shairport
   tags:
     - shairport
+    - system
 
