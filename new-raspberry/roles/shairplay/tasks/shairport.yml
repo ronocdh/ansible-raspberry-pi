@@ -25,9 +25,9 @@
 
 
 - name: Daemonize Shairport
-  command: copy {{shairport_directory}}/scripts/debian/init.d/shairport /etc/init.d/shairport
+  command: cp {{shairport_directory}}/scripts/debian/init.d/shairport /etc/init.d/shairport
   sudo: yes
-  notify: restart_shairport
+  notify: restart shairport
   tags:
     - shairport
     - system
