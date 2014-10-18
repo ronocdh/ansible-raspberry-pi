@@ -4,7 +4,7 @@
   gather_facts: no
 
   roles:
-#     - common
+     - common
      - shairplay
 
   tasks:

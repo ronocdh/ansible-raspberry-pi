@@ -36,6 +36,24 @@
   sudo: yes
   tags: build
 
+
+- name: Clone Shairport repository
+  git: repo=https://github.com/abrasive/shairport dest={{shairport_directory}}
+  tags: shairport
+
+- name: Build Shairport
+  command: chdir={{shairport_directory}} make
+  tags:
+    - build
+    - shairport
+
+- name: Install Shairport
+  command: chdir={{shairport_directory}} make install
+  sudo: yes
+  tags:
+    - build
+    - shairport
+
 - name: Clone Shairplay repository.
   git: repo=https://github.com/juhovh/shairplay dest={{shairplay_directory}}
   tags:

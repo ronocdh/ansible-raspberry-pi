@@ -1,4 +1,5 @@
 ---
 perl_sdp_directory: /tmp/perl-net-sdp/
 shairplay_directory: /home/{{user}}/shairplay/
+shairport_directory: /home/{{user}}/shairport/
 user: pi
