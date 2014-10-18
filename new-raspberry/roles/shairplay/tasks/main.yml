@@ -36,7 +36,6 @@
   sudo: yes
   tags: build
 
-
 - name: Clone Shairport repository
   git: repo=https://github.com/abrasive/shairport dest={{shairport_directory}}
   tags: shairport
@@ -52,6 +51,18 @@
   sudo: yes
   tags:
     - build
+    - shairport
+
+- name: Create shairport user
+  user: name={{shairport_user}} create_home=no system=yes groups=audio append=yes
+  tags:
+    - shairport
+
+- name: Daemonize Shairport
+  command: copy {{shairport_directory}}/scripts/debian/init.d/shairport /etc/init.d/shairport
+  sudo: yes
+  notify: restart_shairport
+  tags:
     - shairport
 
 - name: Clone Shairplay repository.
