@@ -1,17 +1,12 @@
 ---
-- hosts: third
+- hosts: all
   user: pi
-  sudo: True
   gather_facts: no
 
   roles:
      - common
-     - oh-my-zsh
-     - rmate
+     - airplay-service
 
   tasks:
     - name: Final greeting upon successful Completion.
       pause: prompt="If you've got this far without any errors everything is probably okay! Press [Enter] to continue."
-    - name: rebooting
-      sudo: yes
-      action: command /sbin/reboot -t now

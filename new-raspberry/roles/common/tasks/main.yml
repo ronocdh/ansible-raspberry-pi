@@ -9,6 +9,7 @@
 
 - name: We are setting our new hostname.
   hostname: name={{ hostname }}
+  sudo: yes
 
 - name: Make sure some basic tools are installed
   apt: pkg={{ item }} state=latest

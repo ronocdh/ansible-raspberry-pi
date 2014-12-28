@@ -1,0 +1,33 @@
+---
+- name: Clone Shairplay repository.
+  git: repo=https://github.com/juhovh/shairplay dest={{shairplay_directory}}
+  tags:
+    - packages
+    - shairplay
+    - git
+
+- name: Generate Shairplay build settings
+  command: chdir={{shairplay_directory}} ./autogen.sh
+  tags:
+    - build
+    - shairplay
+
+- name: Configure Shairplay build settings
+  command: chdir={{shairplay_directory}} ./configure
+  tags:
+    - build
+    - shairplay
+
+- name: Configure Shairplay build settings
+  command: chdir={{shairplay_directory}} make
+  tags:
+    - build
+    - shairplay
+
+- name: Configure Shairplay build settings
+  command: chdir={{shairplay_directory}} make install
+  sudo: yes
+  tags:
+    - build
+    - shairplay
+

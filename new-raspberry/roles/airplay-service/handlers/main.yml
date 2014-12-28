@@ -1,0 +1,4 @@
+---
+- name: restart shairport
+  command: service shairport restart
+  sudo: yes
