@@ -1,0 +1,2 @@
+[raspberries]
+juicebox ansible_ssh_host=juicebox.local ansible_ssh_user=pi

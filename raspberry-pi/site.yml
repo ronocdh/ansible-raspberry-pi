@@ -1,0 +1,9 @@
+---
+- hosts: all
+  user: pi
+  gather_facts: no
+
+  roles:
+     - common
+     - airplay-service
+

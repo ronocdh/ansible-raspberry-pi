@@ -1,2 +1,0 @@
-[raspberries]
-jukebox ansible_ssh_host=10.0.0.32 ansible_ssh_user=pi
