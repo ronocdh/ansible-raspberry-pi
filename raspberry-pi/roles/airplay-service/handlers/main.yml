@@ -1,4 +1,9 @@
 ---
 - name: restart shairport
+  # Unfortunately, restarting the service while there's
+  # an active connection sets the client to mute. Possibly 
+  # that's a client configuration problem, so leaving this in here.
   command: service shairport restart
   sudo: yes
+
+
