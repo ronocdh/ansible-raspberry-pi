@@ -2,8 +2,10 @@
 - hosts: all
   user: pi
   gather_facts: no
+  sudo: yes
 
   roles:
      - common
+     - wifi
      - airplay-service
 

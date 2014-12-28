@@ -1,7 +1,6 @@
 ---
 - name: Enable analog audio output port (instead of HDMI)
   shell: "amixer cset numid=3 1"
-  sudo: yes
 
 - include: "packages.yml"
   # shairport seems to work great, but leaving 

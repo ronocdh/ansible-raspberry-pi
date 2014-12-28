@@ -26,7 +26,6 @@
 
 - name: Configure Shairplay build settings
   command: chdir={{shairplay_directory}} make install
-  sudo: yes
   tags:
     - build
     - shairplay

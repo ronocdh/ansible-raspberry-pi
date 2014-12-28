@@ -11,14 +11,12 @@
 
 - name: Install Shairport
   command: chdir={{shairport_directory}} make install
-  sudo: yes
   tags:
     - build
     - shairport
 
 - name: Create shairport user
   user: name={{shairport_user}} createhome=no system=yes groups=audio append=yes
-  sudo: yes
   tags:
     - shairport
     - system
@@ -26,7 +24,6 @@
 
 - name: Daemonize Shairport
   command: cp {{shairport_directory}}/scripts/debian/init.d/shairport /etc/init.d/shairport
-  sudo: yes
   notify: restart shairport
   tags:
     - shairport

@@ -1,0 +1,15 @@
+---
+- name: Let's update the apt cache.
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Install wpa_supplicant
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - wpasupplicant
+    - wireless-tools
+
+- name: Install netifaces
+  copy: src=interfaces dest=/etc/network/interfaces mode=0644 owner=root group=root
+
+- name: Configure wpa-supplicant with AP credentials
+  template: src=wpa_supplicant.conf dest=/etc/wpa_supplicant/wpa_supplicant.conf mode=0600 owner=root group=root

@@ -1,7 +1,6 @@
 ---
 - name: Install Net::SDP dependencies
   apt: pkg={{ item }} state=latest
-  sudo: yes
   with_items:
     - git
     - libao-dev
@@ -15,7 +14,6 @@
 
 - name: Install Shairplay dependencies
   apt: pkg={{ item }} state=latest
-  sudo: yes
   with_items:
     - autoconf
     - automake
@@ -34,16 +32,13 @@
 
 - name: Build Perl Net:SDP
   command: chdir={{perl_sdp_directory}} perl Build.PL
-  sudo: yes
   tags: build
 
 - name: Build Perl Net:SDP test
   command: chdir={{perl_sdp_directory}} ./Build test
-  sudo: yes
   tags: build
 
 - name: Build Perl Net:SDP install
   command: chdir={{perl_sdp_directory}} ./Build install
-  sudo: yes
   tags: build
 
